@@ -14,6 +14,7 @@ License  : GPL-2.0 GPL-3.0 LGPL-2.1 Public-Domain
 Requires: xz-bin = %{version}-%{release}
 Requires: xz-lib = %{version}-%{release}
 Requires: xz-locales = %{version}-%{release}
+Requires: xz-man = %{version}-%{release}
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : binutils-dev
@@ -114,6 +115,7 @@ dev32 components for the xz package.
 %package doc
 Summary: doc components for the xz package.
 Group: Documentation
+Requires: xz-man = %{version}-%{release}
 
 %description doc
 doc components for the xz package.
@@ -141,6 +143,14 @@ Group: Default
 
 %description locales
 locales components for the xz package.
+
+
+%package man
+Summary: man components for the xz package.
+Group: Default
+
+%description man
+man components for the xz package.
 
 
 %package staticdev
@@ -177,7 +187,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618654439
+export SOURCE_DATE_EPOCH=1618654582
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -240,7 +250,7 @@ make  %{?_smp_mflags}  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618654439
+export SOURCE_DATE_EPOCH=1618654582
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -302,6 +312,29 @@ popd
 /usr/include/lzma/vli.h
 /usr/lib64/liblzma.so
 /usr/lib64/pkgconfig/liblzma.pc
+
+%files dev32
+%defattr(-,root,root,-)
+/usr/lib32/liblzma.so
+/usr/lib32/pkgconfig/32liblzma.pc
+/usr/lib32/pkgconfig/liblzma.pc
+
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/doc/xz/*
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/liblzma.so.5
+/usr/lib64/liblzma.so.5.3.99
+
+%files lib32
+%defattr(-,root,root,-)
+/usr/lib32/liblzma.so.5
+/usr/lib32/liblzma.so.5.3.99
+
+%files man
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/lzcat.1
 /usr/share/man/man1/lzcmp.1
 /usr/share/man/man1/lzdiff.1
@@ -325,26 +358,6 @@ popd
 /usr/share/man/man1/xzgrep.1
 /usr/share/man/man1/xzless.1
 /usr/share/man/man1/xzmore.1
-
-%files dev32
-%defattr(-,root,root,-)
-/usr/lib32/liblzma.so
-/usr/lib32/pkgconfig/32liblzma.pc
-/usr/lib32/pkgconfig/liblzma.pc
-
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/xz/*
-
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/liblzma.so.5
-/usr/lib64/liblzma.so.5.3.99
-
-%files lib32
-%defattr(-,root,root,-)
-/usr/lib32/liblzma.so.5
-/usr/lib32/liblzma.so.5.3.99
 
 %files staticdev
 %defattr(-,root,root,-)
