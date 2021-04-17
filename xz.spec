@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : xz
 Version  : 5.2.5
-Release  : 63
+Release  : 66
 URL      : file:///aot/build/clearlinux/packages/xz/xz-5.2.5.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/xz/xz-5.2.5.tar.gz
 Summary  : General purpose data compression library
@@ -177,7 +177,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618651591
+export SOURCE_DATE_EPOCH=1618654439
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -240,7 +240,7 @@ make  %{?_smp_mflags}  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618651591
+export SOURCE_DATE_EPOCH=1618654439
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
