@@ -57,6 +57,7 @@ BuildRequires : libtool
 BuildRequires : libtool-dev
 BuildRequires : m4
 BuildRequires : openssl-dev
+BuildRequires : openssl-staticdev
 BuildRequires : pkg-config-dev
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -185,7 +186,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620021376
+export SOURCE_DATE_EPOCH=1620037952
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -268,7 +269,7 @@ make  %{?_smp_mflags}  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620021376
+export SOURCE_DATE_EPOCH=1620037952
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -281,6 +282,10 @@ fi
 popd
 %make_install
 %find_lang xz
+## install_append content
+install -dm 0755 %{buildroot}/usr/lib64/haswell/
+install -m0644 src/liblzma/.libs/liblzma.so* %{buildroot}/usr/lib64/haswell/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -328,6 +333,7 @@ popd
 /usr/include/lzma/stream_flags.h
 /usr/include/lzma/version.h
 /usr/include/lzma/vli.h
+/usr/lib64/haswell/liblzma.so
 /usr/lib64/liblzma.so
 /usr/lib64/pkgconfig/liblzma.pc
 
@@ -343,6 +349,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/haswell/liblzma.so.5
+/usr/lib64/haswell/liblzma.so.5.3.99
 /usr/lib64/liblzma.so.5
 /usr/lib64/liblzma.so.5.3.99
 
