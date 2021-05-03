@@ -15,10 +15,9 @@ libtool
 libtool-dev
 m4
 openssl-dev
-openssl-staticdev
+#openssl-staticdev
 pkg-config-dev
 findutils
-glibc-abi
 glibc-bench
 glibc-bin
 glibc-dev
@@ -42,7 +41,6 @@ elfutils-dev
 expect
 flex
 gcc
-gcc-abi
 gcc-dev
 gcc-dev32
 gcc-doc
