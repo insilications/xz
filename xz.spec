@@ -186,7 +186,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620037952
+export SOURCE_DATE_EPOCH=1620038839
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -269,7 +269,7 @@ make  %{?_smp_mflags}  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620037952
+export SOURCE_DATE_EPOCH=1620038839
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -284,7 +284,7 @@ popd
 %find_lang xz
 ## install_append content
 install -dm 0755 %{buildroot}/usr/lib64/haswell/
-install -m0644 src/liblzma/.libs/liblzma.so* %{buildroot}/usr/lib64/haswell/
+cp --archive src/liblzma/.libs/liblzma.so* %{buildroot}/usr/lib64/haswell/
 ## install_append end
 
 %files

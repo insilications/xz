@@ -1,2 +1,2 @@
 install -dm 0755 %{buildroot}/usr/lib64/haswell/
-install -m0644 src/liblzma/.libs/liblzma.so* %{buildroot}/usr/lib64/haswell/
+cp --archive src/liblzma/.libs/liblzma.so* %{buildroot}/usr/lib64/haswell/
