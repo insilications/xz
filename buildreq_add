@@ -15,7 +15,7 @@ libtool
 libtool-dev
 m4
 openssl-dev
-#openssl-staticdev
+openssl-staticdev
 pkg-config-dev
 findutils
 glibc-bench
